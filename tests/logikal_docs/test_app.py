@@ -50,10 +50,10 @@ def test_open(mocker: MockerFixture) -> None:
 
 def test_errors(mocker: MockerFixture) -> None:
     mocker.patch('logikal_docs.app.subprocess.run', side_effect=KeyboardInterrupt)
-    assert app.main() == 1
+    assert app.main([]) == 1
 
     mocker.patch('logikal_docs.app.subprocess.run', side_effect=RuntimeError('Test'))
-    assert app.main() == 'Error: Test'
+    assert app.main([]) == 'Error: Test'
 
 
 def test_config_merging(mocker: MockerFixture) -> None:
