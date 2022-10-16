@@ -1,2 +1,0 @@
-# logikal-docs
-Documentation management
