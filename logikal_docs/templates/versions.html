@@ -1,0 +1,25 @@
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-pull-left fa-tag"> Versions</span>
+    <span id="footer-version">{{ version }}</span> <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      {%- for docs_version in versions.split(',') -%}
+        <dd
+          {%- if docs_version == current_version %} class="current-version"{% endif -%}
+          {%- if docs_version == 'latest' %} id="footer-version-latest"{% endif -%}
+          ><a href="{{ baseurl }}/{{ docs_version }}/">{{ docs_version }}</a></dd>
+      {%- endfor -%}
+    </dl>
+  </div>
+</div>
+<script>
+  if (window.location.href.includes("/latest/")) {
+    footer_version = document.getElementById('footer-version');
+    footer_version.innerHTML = `${footer_version.innerHTML.trim()} (latest)`;
+    document.getElementById('footer-version-latest').classList.add('current-version');
+    header_version = document.querySelector('div.wy-side-nav-search div.version');
+    header_version.innerHTML = `${header_version.innerHTML.trim()} (latest)`;
+  }
+</script>

@@ -1,0 +1,12 @@
+name: Publish release
+on:
+  release:
+    types: [released]
+
+jobs:
+  publish-release:
+    name: Publish release
+    uses: logikal-io/github-workflows/.github/workflows/publish-release.yml@v1.1.1-dev5
+    with:
+      name: logikal-docs
+    secrets: inherit

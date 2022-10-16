@@ -1,0 +1,43 @@
+[build-system]
+requires = ['setuptools>=45', 'setuptools-scm[toml]>=6.2']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'logikal-docs'
+description = 'Documentation management'
+readme = 'README.rst'
+requires-python = '~= 3.8'
+license = {file = 'LICENSE.txt'}
+authors = [{name = 'Logikal GmbH', email = 'contact@logikal.io'}]
+keywords = ['sphinx']
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Framework :: Sphinx',
+  'Intended Audience :: Developers',
+  'License :: OSI Approved :: MIT License',
+  'Operating System :: POSIX :: Linux',
+  'Programming Language :: Python :: 3',
+  'Programming Language :: Python :: 3.8',
+  'Topic :: Software Development',
+]
+dynamic = ['version', 'dependencies']
+
+[project.scripts]
+docs = 'logikal_docs.app:main'
+
+[project.urls]
+'Documentation' = 'https://docs.logikal.io/logikal-docs/'
+'Release notes' = 'https://github.com/logikal-io/logikal-docs/releases'
+'Issue tracker' = 'https://github.com/logikal-io/logikal-docs/issues'
+'Source code' = 'https://github.com/logikal-io/logikal-docs'
+
+[tool.setuptools]
+packages = [
+  'logikal_docs', 'logikal_docs.templates',
+  'logikal_docs.static', 'logikal_docs.static.css', 'logikal_docs.static.css.fonts',
+]
+
+[tool.setuptools.dynamic]
+dependencies = {file = 'requirements/core.txt'}
+
+[tool.setuptools_scm]

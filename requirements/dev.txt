@@ -1,0 +1,5 @@
+-r core.txt
+-r build.txt
+-r docs.txt
+
+pytest-logikal[browser]==1.0.0
