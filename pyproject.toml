@@ -32,7 +32,9 @@ docs = 'logikal_docs.app:main'
 'Source code' = 'https://github.com/logikal-io/logikal-docs'
 
 [tool.setuptools]
-packages = ['logikal_docs', 'logikal_docs.templates', 'logikal_docs.static.css']
+packages = [
+  'logikal_docs', 'logikal_docs.templates', 'logikal_docs.static', 'logikal_docs.static.css',
+]
 
 [tool.setuptools.dynamic]
 dependencies = {file = 'requirements/core.txt'}
