@@ -4,7 +4,7 @@ on: pull_request
 jobs:
   run-python-tests:
     name: Run Python tests
-    uses: logikal-io/github-workflows/.github/workflows/run-python-tests.yml@v1.1.1-dev8
+    uses: logikal-io/github-workflows/.github/workflows/run-python-tests.yml@v1.1.1
   run-terraform-tests:
     name: Run Terraform tests
-    uses: logikal-io/github-workflows/.github/workflows/run-terraform-tests.yml@v1.1.1-dev8
+    uses: logikal-io/github-workflows/.github/workflows/run-terraform-tests.yml@v1.1.1
