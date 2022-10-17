@@ -9,4 +9,7 @@ jobs:
     uses: logikal-io/github-workflows/.github/workflows/publish-release.yml@v1.1.1-dev5
     with:
       name: logikal-docs
+    permissions:
+      contents: read
+      id-token: write
     secrets: inherit
