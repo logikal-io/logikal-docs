@@ -1,2 +1,8 @@
+exclude .gitignore
+prune .github
+prune cloud
+prune docs
+prune requirements
+prune tests
 # Necessary for building, see https://github.com/pypa/setuptools/issues/3570
 include requirements/core.txt
