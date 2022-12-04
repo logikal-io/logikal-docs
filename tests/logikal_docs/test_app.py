@@ -65,7 +65,7 @@ def test_config_merging(mocker: MockerFixture) -> None:
     config = Config(author='Test Author', extensions=['sphinx.ext.autodoc'])
     import_module.return_value = config
     app.main(['--build'])
-    expected_extensions = ['sphinx_rtd_theme'] + config.extensions
+    expected_extensions = ['sphinx_rtd_theme', 'jupyter_sphinx'] + config.extensions
     assert sphinx_main.call_args.kwargs['confoverrides']['extensions'] == expected_extensions
     assert sphinx_main.call_args.kwargs['confoverrides']['author'] == config.author
 

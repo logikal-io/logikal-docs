@@ -1,1 +1,4 @@
 -e .
+-r jupyter.txt
+
+pandas==1.5.2

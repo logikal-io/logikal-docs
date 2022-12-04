@@ -40,4 +40,14 @@ packages = [
 [tool.setuptools.dynamic]
 dependencies = {file = 'requirements/core.txt'}
 
+[tool.setuptools.dynamic.optional-dependencies]
+jupyter = {file = 'requirements/jupyter.txt'}
+
 [tool.setuptools_scm]
+
+[tool.pytest.ini_options]
+norecursedirs = ['build', 'docs/jupyter_execute']
+filterwarnings = [
+  # This can be removed when using jupyter_core 6+
+  'ignore:Jupyter is migrating its paths.*:DeprecationWarning',
+]
