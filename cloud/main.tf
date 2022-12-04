@@ -1,5 +1,5 @@
 locals {
-  packages = ["logikal-docs", "pytest-logikal"]
+  packages = ["logikal-docs", "pytest-logikal", "mindlab"]
 }
 
 # Documentation hosting

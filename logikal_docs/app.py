@@ -8,6 +8,7 @@ import subprocess
 import sys
 from datetime import datetime
 from importlib import import_module, metadata
+from importlib.util import find_spec
 from pathlib import Path
 from typing import Any, Dict, Sequence, Union
 
@@ -67,6 +68,10 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
         shutil.rmtree(args.output_path, ignore_errors=True)
 
     # Configuration overrides
+    extensions = ['sphinx_rtd_theme']
+    if find_spec('jupyter_sphinx'):
+        extensions.append('jupyter_sphinx')
+
     config_path = args.source_path / 'conf.py'
     config_overrides = _get_config_overrides(
         config_path=config_path,
@@ -99,7 +104,7 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
             'sphinx.ext.intersphinx': {'intersphinx_timeout': 15},
         },
         base_config={
-            'extensions': ['sphinx_rtd_theme'],
+            'extensions': extensions,
             'templates_path': [str((Path(__file__).parent / 'templates').resolve())],
             'html_static_path': [str((Path(__file__).parent / 'static').resolve())],
             'html_css_files': ['css/logikal_docs.css'],

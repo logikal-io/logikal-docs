@@ -39,3 +39,24 @@ configure your own extensions in your ``docs/conf.py`` file (which is now option
 
 We use the available git tags starting with ``v[0-9]`` to identify the current version and to
 populate the automatically generated version selection panel.
+
+Jupyter
+-------
+You can install logikal-docs with `Jupyter <https://jupyter.org/>`_ support:
+
+.. code-block:: shell
+
+    pip install logikal-docs[jupyter]
+
+This allows you to run and render the result of arbitrary Python statements (via the `Jupyter
+Sphinx extension <https://jupyter-sphinx.readthedocs.io/en/latest/>`_):
+
+.. jupyter-execute::
+
+    from pandas import DataFrame
+
+    DataFrame({
+        'Movie': ['The Lord of the Rings', 'Back to the Future', 'Blade Runner'],
+        'Budget [M USD]': [93, 19, 30],
+        'Box Office [M USD]': [898, 389, 42],
+    })

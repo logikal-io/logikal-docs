@@ -1,5 +1,6 @@
 -r core.txt
+-r jupyter.txt
 -r build.txt
 -r docs.txt
 
-pytest-logikal[browser]==1.1.1
+pytest-logikal[browser]==1.2.0
