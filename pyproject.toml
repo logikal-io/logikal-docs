@@ -20,7 +20,7 @@ classifiers = [
   'Programming Language :: Python :: 3.8',
   'Topic :: Software Development',
 ]
-dynamic = ['version', 'dependencies']
+dynamic = ['version', 'dependencies', 'optional-dependencies']
 
 [project.scripts]
 docs = 'logikal_docs.app:main'
