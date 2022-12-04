@@ -1,10 +1,15 @@
 locals {
   organization = "logikal.io"
   project = "docs"
-  region = "europe-west6"
+  backend = "gcs"
 
   providers = {
-    google = "~> 4.36"
-    dnsimple = "~> 0.14"
+    google = {
+      version = "~> 4.36"
+      region = "europe-west6"
+    }
+    dnsimple = {
+      version = "~> 0.14"
+    }
   }
 }
