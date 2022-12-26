@@ -20,12 +20,9 @@ def test_package_interface() -> None:
     dict(name='mobile', width=600, mobile=True),
 )
 def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
-    Tag = NamedTuple('Tag', [('name', str)])
     mocker.patch('logikal_docs.app.metadata.version', return_value='1.10.0')
-    mocker.patch(
-        'logikal_docs.app.git.Repo.tags',
-        [Tag('v1.0.0'), Tag('v1.1.0'), Tag('v1.2.0'), Tag('v1.10.0')],
-    )
+    run = mocker.patch('logikal_docs.app.subprocess.run')
+    run.return_value.stdout = '\n'.join(['v1.0.0', 'v1.1.0', 'v1.2.0', 'v1.10.0'])
     target_path = tmp_path / 'latest'  # ensures that we test the logic for the latest version
     app.main(['--build', '--output', str(target_path), '--clear'])
     browser.get(f'file://{target_path / "index.html"}')
