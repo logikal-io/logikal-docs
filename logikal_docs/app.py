@@ -2,7 +2,6 @@
 A tool for building and managing Python documentation.
 """
 import argparse
-import re
 import shutil
 import subprocess
 import sys
@@ -12,7 +11,6 @@ from importlib.util import find_spec
 from pathlib import Path
 from typing import Any, Dict, Sequence, Union
 
-import git
 import tomli
 from packaging.version import parse
 from sphinx.application import Sphinx
@@ -59,8 +57,12 @@ def _get_config_overrides(
 
 
 def build(args: argparse.Namespace, project: str, author: str, version: str, base_url: str) -> int:
-    repo = git.Repo(str(args.source_path.parent))  # type: ignore[attr-defined]
-    tags = [tag.name[1:] for tag in repo.tags if re.match('v[0-9]', tag.name)]
+    process = subprocess.run(  # nosec: secure, not using untrusted input
+        ['git', 'tag', '-l', 'v*'],
+        cwd=str(args.source_path),
+        capture_output=True, text=True, check=True,
+    )
+    tags = [tag[1:] for tag in process.stdout.splitlines()]
     tags = ['latest'] + list(sorted(tags, key=parse, reverse=True))
 
     if args.clear:
