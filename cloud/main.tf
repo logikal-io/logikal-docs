@@ -32,9 +32,21 @@ module "github_auth" {
   }
 }
 
-resource "google_storage_bucket_iam_member" "docs_uploader" {
+resource "google_storage_bucket_iam_member" "docs_uploader_object_admin" {
   bucket = module.docs_website.bucket_name
   role = "roles/storage.objectAdmin"
+  member = "serviceAccount:${module.github_auth.service_account_emails["docs-uploader"]}"
+}
+
+resource "google_project_iam_custom_role" "bucket_metadata_reader" {
+  role_id = "BucketMetadataReader"
+  title = "Bucket Metadata Reader"
+  permissions = ["storage.buckets.get"]
+}
+
+resource "google_storage_bucket_iam_member" "docs_uploader_bucket_metadata_reader" {
+  bucket = module.docs_website.bucket_name
+  role = google_project_iam_custom_role.bucket_metadata_reader.id
   member = "serviceAccount:${module.github_auth.service_account_emails["docs-uploader"]}"
 }
 
