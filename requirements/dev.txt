@@ -1,5 +1,4 @@
 -r core.txt
--r jupyter.txt
 -r build.txt
 -r docs.txt
 

@@ -41,7 +41,7 @@ packages = [
 dependencies = {file = 'requirements/core.txt'}
 
 [tool.setuptools.dynamic.optional-dependencies]
-jupyter = {file = 'requirements/jupyter.txt'}
+jupyter = {file = 'requirements/extras/jupyter.txt'}
 
 [tool.setuptools_scm]
 

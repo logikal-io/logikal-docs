@@ -8,6 +8,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+
   run-terraform-tests:
     name: Run Terraform tests
     uses: logikal-io/github-workflows/.github/workflows/run-terraform-tests.yml@v3

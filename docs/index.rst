@@ -35,7 +35,9 @@ The documentation is built with `Sphinx <https://www.sphinx-doc.org/en/master/>`
 the Docs Sphinx theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/>`_. Note that we
 pre-configure Sphinx building and output and we also read out and forward the necessary project
 information from your ``pyproject.toml`` file, therefore you typically only need to add and
-configure your own extensions in your ``docs/conf.py`` file (which is now optional).
+configure your own extensions in your ``docs/conf.py`` file (which is now optional). Additionally,
+we use an improved theme style file with well-defined fonts and a more fluid responsive user
+experience, among other minor patches.
 
 We use the available git tags starting with ``v[0-9]`` to identify the current version and to
 populate the automatically generated version selection panel.

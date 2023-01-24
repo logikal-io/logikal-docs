@@ -61,14 +61,20 @@ code {
   font-family: var(--font-monospace);
 }
 
+/* Wrapping long inline code snippets and class/function definitions */
+.rst-content code.literal, .rst-content tt.literal, span#footer-version {
+  overflow-wrap: break-word;
+}
+
+html.writer-html5 .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)
+  > dt.sig { display: block; overflow-wrap: break-word; }
+
 /* Use white background and foreground */
 .wy-dropdown-menu, .wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu,
 .wy-menu-vertical li.on a, .wy-menu-vertical li.on a:hover, .wy-menu-vertical li.current > a,
 .wy-body-for-nav, .wy-nav-content, .wy-nav-content-wrap {
   background: white;
-}
-@media screen and (min-width: 1100px) {
-  .wy-nav-content-wrap { background: rgba(0, 0, 0, .055); }
 }
 
 .wy-side-nav-search, .wy-side-nav-search > a, .wy-side-nav-search .wy-dropdown > a,
@@ -135,4 +141,60 @@ div.jupyter_container div.cell_output img {
   max-width: unset;
   padding: 7px 7px 0px 7px;
   margin-top: 5px;
+}
+
+/* Improved, more fluid responsive design that maximizes content space */
+/* Extend tablet breakpoint from 768px to 1100px */
+/* Navigation now only changes below 480px */
+@media screen and (max-width: 1099px) {
+  .wy-tray-container { bottom: auto; top: 0; width: 100%; }
+  .wy-tray-container li { width: 100%; }
+  .tablet-hide { display: none; }
+  .wy-body-for-nav { background: white; }
+  .wy-nav-top { display: block; min-height: 63px; }
+  .wy-nav-top i { padding-top: 8px; }
+  .wy-nav-side { left: -300px; }
+  .wy-nav-side.shift { width: 300px; left: 0; }
+  .wy-menu.wy-menu-vertical, .wy-side-nav-search, .wy-side-scroll { width: auto; }
+  .wy-nav-content-wrap { margin-left: 0; }
+  .wy-nav-content-wrap .wy-nav-content { padding: 1.618em 3.236em; }
+  .wy-nav-content-wrap.shift {
+    position: fixed;
+    min-width: unset;
+    left: 300px;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .wy-nav-content-wrap.shift .wy-nav-top a { display: none; }
+  .rst-versions { width: 300px; display: none; }
+  .rst-versions.shift { display: block; }
+
+  /* Make navigation sticky */
+  .wy-nav-top { position: sticky; top: 0; z-index: 1000; }
+}
+
+/* Use compact padding and parameters */
+@media screen and (max-width: 790px) {
+  .wy-nav-content-wrap .wy-nav-content { padding: 1.618em; }
+
+  html.writer-html5 .rst-content dl.field-list { display: block; }
+  html.writer-html5 .rst-content dl.field-list > dt { margin-bottom: 8px; }
+  html.writer-html5 .rst-content dl.field-list > dd { margin-bottom: 12px; }
+  html.writer-html5 .rst-content dl.attribute dl.field-list { display: grid; }
+  html.writer-html5 .rst-content dl.attribute dl.field-list > dt { margin-bottom: 0px; }
+  html.writer-html5 .rst-content dl.attribute dl.field-list > dd { margin-bottom: 0px; }
+}
+
+/* Use dynamic-width navigation */
+@media screen and (max-width: 480px) {
+  .wy-nav-side.shift { width: 85%; }
+  .rst-versions { width: 85%; }
+  .wy-nav-content-wrap.shift { min-width: 100%; left: 85%; }
+}
+
+/* Use white on gray background */
+@media screen and (min-width: 1100px) {
+  .wy-nav-content-wrap { background: rgba(0, 0, 0, .055); }
+  .wy-nav-content { margin: 0; background: white; }
 }

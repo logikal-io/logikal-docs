@@ -1,4 +1,5 @@
 import subprocess
+from datetime import datetime
 from pathlib import Path
 from typing import List, NamedTuple
 
@@ -20,6 +21,10 @@ def test_package_interface() -> None:
     dict(name='mobile', width=600, mobile=True),
 )
 def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
+    # Note: pytest-freezer causes jupyter-sphinx to hang, so we're patching the module instead
+    mock_datetime = mocker.patch('logikal_docs.app.datetime')
+    mock_datetime.now.return_value = datetime(2022, 10, 1)
+
     mocker.patch('logikal_docs.app.metadata.version', return_value='1.10.0')
     run = mocker.patch('logikal_docs.app.subprocess.run')
     run.return_value.stdout = '\n'.join(['v1.0.0', 'v1.1.0', 'v1.2.0', 'v1.10.0'])

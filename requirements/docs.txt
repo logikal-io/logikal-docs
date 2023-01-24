@@ -1,4 +1,4 @@
 -e .
--r jupyter.txt
+-r extras/jupyter.txt
 
-pandas==1.5.2
+pandas==1.5.3
