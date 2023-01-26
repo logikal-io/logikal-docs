@@ -2,6 +2,11 @@ locals {
   packages = ["logikal-docs", "pytest-logikal", "mindlab", "stormware"]
 }
 
+# Needed for Stormware documentation building
+resource "google_project_service" "sheets" {
+  service = "sheets.googleapis.com"
+}
+
 # Documentation hosting
 module "docs_website" {
   source = "github.com/logikal-io/terraform-modules//gcp/static-website?ref=v1.3.0"
