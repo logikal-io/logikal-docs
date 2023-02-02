@@ -1,5 +1,5 @@
 locals {
-  packages = ["logikal-docs", "pytest-logikal", "mindlab", "stormware"]
+  packages = ["logikal-docs", "pytest-logikal", "mindlab", "stormware", "pyorbs"]
 }
 
 # Needed for Stormware documentation building
