@@ -1,4 +1,5 @@
 -e .
+-r core.txt
 -r extras/jupyter.txt
 
 pandas==1.5.3
