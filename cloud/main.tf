@@ -9,7 +9,7 @@ resource "google_project_service" "sheets" {
 
 # Documentation hosting
 module "docs_website" {
-  source = "github.com/logikal-io/terraform-modules//gcp/static-website?ref=v1.3.0"
+  source = "github.com/logikal-io/terraform-modules//gcp/static-website?ref=v1.6.0"
 
   domain = "docs.logikal.io"
   force_cache_all = true
@@ -30,7 +30,7 @@ resource "dnsimple_zone_record" "docs_website" {
 
 # GitHub Actions
 module "github_auth" {
-  source = "github.com/logikal-io/terraform-modules//gcp/github-auth?ref=v1.3.0"
+  source = "github.com/logikal-io/terraform-modules//gcp/github-auth?ref=v1.6.0"
 
   service_account_accesses = {
     "docs-uploader" = [for package in local.packages : "logikal-io/${package}"]
