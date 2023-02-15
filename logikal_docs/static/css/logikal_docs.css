@@ -1,8 +1,10 @@
+/* Versions */
 .rst-versions.shift-up { overflow-y: auto; }
 dd.current-version { font-weight: 700; }
 
 /* Monospace font */
 /* License: fonts/RobotoMono-LICENSE.txt */
+/* See https://github.com/readthedocs/sphinx_rtd_theme/issues/1435 */
 @font-face {
   font-family: 'roboto-mono';
   src: url('fonts/RobotoMono-Regular.woff2') format('woff2'),
@@ -62,6 +64,7 @@ code {
 }
 
 /* Wrapping long inline code snippets and class/function definitions */
+/* See https://github.com/readthedocs/sphinx_rtd_theme/issues/1436 */
 .rst-content code.literal, .rst-content tt.literal, span#footer-version {
   overflow-wrap: break-word;
 }
@@ -71,6 +74,7 @@ html.writer-html5 .rst-content
   > dt.sig { display: block; overflow-wrap: break-word; }
 
 /* Use white background and foreground */
+/* See https://github.com/readthedocs/sphinx_rtd_theme/issues/1437 */
 .wy-dropdown-menu, .wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu,
 .wy-menu-vertical li.on a, .wy-menu-vertical li.on a:hover, .wy-menu-vertical li.current > a,
 .wy-body-for-nav, .wy-nav-content, .wy-nav-content-wrap {
@@ -146,6 +150,7 @@ div.jupyter_container div.cell_output img {
 /* Improved, more fluid responsive design that maximizes content space */
 /* Extend tablet breakpoint from 768px to 1100px */
 /* Navigation now only changes below 480px */
+/* See https://github.com/readthedocs/sphinx_rtd_theme/issues/1438 */
 @media screen and (max-width: 1099px) {
   .wy-tray-container { bottom: auto; top: 0; width: 100%; }
   .wy-tray-container li { width: 100%; }

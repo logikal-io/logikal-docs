@@ -23,7 +23,7 @@ classifiers = [
 dynamic = ['version', 'dependencies', 'optional-dependencies']
 
 [project.scripts]
-docs = 'logikal_docs.app:main'
+docs = 'logikal_docs.docs:main'
 
 [project.urls]
 'Documentation' = 'https://docs.logikal.io/logikal-docs/'
