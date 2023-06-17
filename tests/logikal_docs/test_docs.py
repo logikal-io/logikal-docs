@@ -46,7 +46,7 @@ def test_version(capsys: CaptureFixture[str], mocker: MockerFixture) -> None:
 def test_open(mocker: MockerFixture) -> None:
     run = mocker.patch('logikal_docs.docs.subprocess.run')
     run.return_value.returncode = 0
-    assert main(['--open']) == 0
+    assert not main(['--open'])
     assert run.called
 
 

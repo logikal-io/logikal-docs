@@ -17,7 +17,7 @@ from sphinx.application import Sphinx
 from sphinx.cmd.build import jobs_argument
 
 
-def _get_config_overrides(
+def _get_config_overrides(  # pylint: disable=too-complex
     config_path: Path,
     default_config: Dict[str, Any],
     default_extension_config: Dict[str, Dict[str, Any]],
