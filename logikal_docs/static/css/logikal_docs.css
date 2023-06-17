@@ -8,28 +8,32 @@ dd.current-version { font-weight: 700; }
 @font-face {
   font-family: 'roboto-mono';
   src: url('fonts/RobotoMono-Regular.woff2') format('woff2'),
-       url('fonts/RobotoMono-Regular.woff') format('woff');
+       url('fonts/RobotoMono-Regular.woff') format('woff'),
+       url('fonts/RobotoMono-Regular.ttf') format('truetype');
   font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'roboto-mono';
-  src: url('fonts/RobotoMono-Bold.woff2') format('woff2'),
-       url('fonts/RobotoMono-Bold.woff') format('woff');
-  font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'roboto-mono';
   src: url('fonts/RobotoMono-Italic.woff2') format('woff2'),
-       url('fonts/RobotoMono-Italic.woff') format('woff');
+       url('fonts/RobotoMono-Italic.woff') format('woff'),
+       url('fonts/RobotoMono-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: 'roboto-mono';
+  src: url('fonts/RobotoMono-Bold.woff2') format('woff2'),
+       url('fonts/RobotoMono-Bold.woff') format('woff'),
+       url('fonts/RobotoMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto-mono';
   src: url('fonts/RobotoMono-BoldItalic.woff2') format('woff2'),
-       url('fonts/RobotoMono-BoldItalic.woff') format('woff');
+       url('fonts/RobotoMono-BoldItalic.woff') format('woff'),
+       url('fonts/RobotoMono-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
 }

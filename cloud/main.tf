@@ -1,5 +1,5 @@
 locals {
-  packages = ["logikal-docs", "pytest-logikal", "mindlab", "stormware", "pyorbs"]
+  packages = ["logikal-docs", "pytest-logikal", "mindlab", "stormware", "pyorbs", "django-logikal"]
 }
 
 # Needed for Stormware documentation building
