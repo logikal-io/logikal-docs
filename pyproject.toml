@@ -50,6 +50,7 @@ jupyter = {file = 'requirements/extras/jupyter.txt'}
 [tool.pytest.ini_options]
 norecursedirs = ['build', 'docs/jupyter_execute']
 filterwarnings = [
+  'error',
   # This can be removed when using jupyter_core 6+
   'ignore:Jupyter is migrating its paths.*:DeprecationWarning',
 ]
