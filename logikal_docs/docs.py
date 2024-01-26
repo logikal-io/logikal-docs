@@ -11,7 +11,7 @@ from importlib.util import find_spec
 from pathlib import Path
 from typing import Any, Dict, Sequence, Union
 
-import tomli
+from logikal_utils.project import PYPROJECT
 from packaging.version import parse
 from sphinx.application import Sphinx
 from sphinx.cmd.build import jobs_argument
@@ -147,18 +147,16 @@ def main(args: Sequence[str] = tuple(sys.argv[1:])) -> Union[int, str]:
                         type=Path, help='build output (default: docs/build)')
     parsed_args = parser.parse_args(args)
     try:
-        pyproject_path = parsed_args.source_path.parent / 'pyproject.toml'
-        pyproject = tomli.loads(pyproject_path.read_text(encoding='utf-8'))
-        project = pyproject['project']['name']
-        version = (pyproject['project'].get('version') or metadata.version(project)).split('+')[0]
+        project = PYPROJECT['project']['name']
+        version = (PYPROJECT['project'].get('version') or metadata.version(project)).split('+')[0]
 
         if parsed_args.build:
             return build(
                 args=parsed_args,
                 project=project,
-                author=', '.join(author['name'] for author in pyproject['project']['authors']),
+                author=', '.join(author['name'] for author in PYPROJECT['project']['authors']),
                 version=version,
-                base_url=pyproject['project']['urls']['Documentation'],
+                base_url=PYPROJECT['project']['urls']['Documentation'],
             )
 
         if parsed_args.version:

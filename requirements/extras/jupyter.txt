@@ -1,1 +1,1 @@
-jupyter-sphinx==0.4.0
+jupyter-sphinx==0.5.3

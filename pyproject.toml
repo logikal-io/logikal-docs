@@ -45,6 +45,9 @@ dependencies = {file = 'requirements/core.txt'}
 [tool.setuptools.dynamic.optional-dependencies]
 jupyter = {file = 'requirements/extras/jupyter.txt'}
 
+[tool.licenses.extend_allowed_packages]
+jupyter-sphinx = '.*'  # should be removed after updating to jupyter-sphinx >0.5.3
+
 [tool.setuptools_scm]
 
 [tool.pytest.ini_options]
