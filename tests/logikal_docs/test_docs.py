@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List, NamedTuple
 
 from pytest import CaptureFixture
-from pytest_logikal.browser import Browser, set_browser
+from pytest_logikal.browser import Browser, scenarios, set_browser
 from pytest_mock import MockerFixture
 from selenium.webdriver.common.by import By
 
@@ -16,10 +16,7 @@ def test_package_interface() -> None:
     subprocess.run(command, check=True)  # nosec: trusted input
 
 
-@set_browser(
-    dict(name='desktop', width=1800),
-    dict(name='mobile', width=600, mobile=True),
-)
+@set_browser([scenarios.desktop, scenarios.mobile_l])
 def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
     # Note: pytest-freezer causes jupyter-sphinx to hang, so we're patching the module instead
     mock_datetime = mocker.patch('logikal_docs.docs.datetime')
@@ -31,7 +28,7 @@ def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
     target_path = tmp_path / 'latest'  # ensures that we test the logic for the latest version
     main(['--build', '--output', str(target_path), '--clear'])
     browser.get(f'file://{target_path / "index.html"}')
-    if browser.name == 'desktop':
+    if browser.settings.name == 'desktop':
         browser.find_element(By.CLASS_NAME, 'rst-versions').click()
     browser.check()
 

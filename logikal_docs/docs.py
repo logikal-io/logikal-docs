@@ -11,7 +11,7 @@ from importlib.util import find_spec
 from pathlib import Path
 from typing import Any, Dict, Sequence, Union
 
-from logikal_utils.project import PYPROJECT
+from logikal_utils.project import PYPROJECT, tool_config
 from packaging.version import parse
 from sphinx.application import Sphinx
 from sphinx.cmd.build import jobs_argument
@@ -127,7 +127,7 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
         buildername='html',
         confoverrides=config_overrides,
         warningiserror=True,
-        parallel=jobs_argument('auto'),
+        parallel=int(tool_config('docs').get('parallel', jobs_argument('auto'))),
         keep_going=True,
     )
     app.build()
