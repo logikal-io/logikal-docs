@@ -57,3 +57,6 @@ filterwarnings = [
   # This can be removed when using jupyter_core 6+
   'ignore:Jupyter is migrating its paths.*:DeprecationWarning',
 ]
+
+[tool.browser.versions]
+chrome = '127.0.6533.99'
