@@ -16,10 +16,10 @@
 </div>
 <script>
   if (window.location.href.includes("/latest/")) {
-    footer_version = document.getElementById('footer-version');
+    let footer_version = document.getElementById('footer-version');
     footer_version.innerHTML = `${footer_version.innerHTML.trim()} (latest)`;
     document.getElementById('footer-version-latest').classList.add('current-version');
-    header_version = document.querySelector('div.wy-side-nav-search div.version');
+    let header_version = document.querySelector('div.wy-side-nav-search div.version');
     header_version.innerHTML = `${header_version.innerHTML.trim()} (latest)`;
   }
 </script>

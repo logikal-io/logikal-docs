@@ -1,7 +1,7 @@
 import subprocess
 from datetime import datetime
 from pathlib import Path
-from typing import List, NamedTuple
+from typing import NamedTuple
 
 from pytest import CaptureFixture
 from pytest_logikal.browser import Browser, scenarios, set_browser
@@ -18,6 +18,9 @@ def test_package_interface() -> None:
 
 @set_browser([scenarios.desktop, scenarios.mobile_l])
 def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
+    if browser.settings.name == 'desktop':
+        browser.height_offset -= 105
+
     # Note: pytest-freezer causes jupyter-sphinx to hang, so we're patching the module instead
     mock_datetime = mocker.patch('logikal_docs.docs.datetime')
     mock_datetime.now.return_value = datetime(2022, 10, 1)
@@ -60,7 +63,7 @@ def test_config_merging(mocker: MockerFixture) -> None:
     sphinx_main = mocker.patch('logikal_docs.docs.Sphinx')
     import_module = mocker.patch('logikal_docs.docs.import_module')
 
-    Config = NamedTuple('Config', [('author', str), ('extensions', List[str])])
+    Config = NamedTuple('Config', [('author', str), ('extensions', list[str])])
     config = Config(author='Test Author', extensions=['sphinx.ext.autodoc'])
     import_module.return_value = config
     main(['--build'])
