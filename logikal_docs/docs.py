@@ -5,11 +5,12 @@ import argparse
 import shutil
 import subprocess
 import sys
+from collections.abc import Sequence
 from datetime import datetime
 from importlib import import_module, metadata
 from importlib.util import find_spec
 from pathlib import Path
-from typing import Any, Dict, Sequence, Union
+from typing import Any
 
 from logikal_utils.project import PYPROJECT, tool_config
 from packaging.version import parse
@@ -19,10 +20,10 @@ from sphinx.cmd.build import jobs_argument
 
 def _get_config_overrides(  # pylint: disable=too-complex
     config_path: Path,
-    default_config: Dict[str, Any],
-    default_extension_config: Dict[str, Dict[str, Any]],
-    base_config: Dict[str, Any],
-) -> Dict[str, Any]:
+    default_config: dict[str, Any],
+    default_extension_config: dict[str, dict[str, Any]],
+    base_config: dict[str, Any],
+) -> dict[str, Any]:
 
     overrides = {**default_config, **base_config}
     if config_path.exists():
@@ -120,10 +121,10 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
 
     # Building
     app = Sphinx(
-        srcdir=str(args.source_path),
-        confdir=str(args.source_path) if config_path.exists() else None,
-        outdir=str(args.output_path),
-        doctreedir=str(args.output_path / '.doctrees'),
+        srcdir=args.source_path,
+        confdir=args.source_path if config_path.exists() else None,
+        outdir=args.output_path,
+        doctreedir=args.output_path / '.doctrees',
         buildername='html',
         confoverrides=config_overrides,
         warningiserror=True,
@@ -134,7 +135,7 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
     return app.statuscode
 
 
-def main(args: Sequence[str] = tuple(sys.argv[1:])) -> Union[int, str]:
+def main(args: Sequence[str] = tuple(sys.argv[1:])) -> int | str:
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_argument_group(title='actions').add_mutually_exclusive_group()
     group.add_argument('-o', '--open', action='store_true', help='open documentation (default)')

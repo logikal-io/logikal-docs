@@ -6,7 +6,7 @@ build-backend = 'setuptools.build_meta'
 name = 'logikal-docs'
 description = 'Documentation management'
 readme = 'README.rst'
-requires-python = '~= 3.8'
+requires-python = '~= 3.12'
 license = {file = 'LICENSE.txt'}
 authors = [{name = 'Logikal GmbH', email = 'contact@logikal.io'}]
 keywords = ['sphinx']
@@ -16,7 +16,7 @@ classifiers = [
   'License :: OSI Approved :: MIT License',
   'Operating System :: POSIX :: Linux',
   'Programming Language :: Python :: 3',
-  'Programming Language :: Python :: 3.8',
+  'Programming Language :: Python :: 3.12',
   'Framework :: Sphinx',
   'Topic :: Software Development',
   'Topic :: Utilities',
@@ -59,4 +59,4 @@ filterwarnings = [
 ]
 
 [tool.browser.versions]
-chrome = '127.0.6533.99'
+chrome = '130.0.6723.69'

@@ -67,6 +67,15 @@ code {
   font-family: var(--font-monospace);
 }
 
+/* Fix version styling */
+/* (see https://github.com/readthedocs/sphinx_rtd_theme/issues/1624) */
+.wy-side-nav-search div.version {
+  margin-top: -.4045em;
+  margin-bottom: .809em;
+  font-weight: 400;
+  color: hsla(0, 0%, 100%, .3);
+}
+
 /* Wrapping long inline code snippets and class/function definitions */
 /* See https://github.com/readthedocs/sphinx_rtd_theme/issues/1436 */
 .rst-content code.literal, .rst-content tt.literal, span#footer-version {
