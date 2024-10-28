@@ -18,8 +18,8 @@ def test_package_interface() -> None:
 
 @set_browser([scenarios.desktop, scenarios.mobile_l])
 def test_build(browser: Browser, mocker: MockerFixture, tmp_path: Path) -> None:
-    if browser.settings.name == 'desktop':
-        browser.height_offset -= 105
+    if browser.settings.name == 'mobile_l':
+        browser.height_offset += 105
 
     # Note: pytest-freezer causes jupyter-sphinx to hang, so we're patching the module instead
     mock_datetime = mocker.patch('logikal_docs.docs.datetime')
