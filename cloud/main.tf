@@ -1,7 +1,7 @@
 locals {
   packages = [
     "logikal-docs", "pytest-logikal", "mindlab", "stormware", "pyorbs", "django-logikal",
-    "logikal-utils",
+    "logikal-utils", "logikal-browser",
   ]
 }
 
