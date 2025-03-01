@@ -59,4 +59,4 @@ filterwarnings = [
 ]
 
 [tool.browser.versions]
-chrome = '130.0.6723.69'
+chrome = '132.0.6834.83'
