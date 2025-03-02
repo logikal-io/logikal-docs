@@ -12,15 +12,16 @@ resource "google_project_service" "sheets" {
 
 # Documentation hosting
 module "github_auth" {
-  source = "github.com/logikal-io/terraform-modules//gcp/github-auth?ref=v1.12.6"
+  source = "github.com/logikal-io/terraform-modules//gcp/github-auth?ref=v1.15.0"
 
+  github_organization = var.organization_id
   service_account_accesses = {
     "docs-uploader" = [for package in local.packages : "logikal-io/${package}"]
   }
 }
 
 module "docs_website" {
-  source = "github.com/logikal-io/terraform-modules//gcp/static-website?ref=v1.12.6"
+  source = "github.com/logikal-io/terraform-modules//gcp/static-website?ref=v1.15.0"
 
   project_id = var.project_id
   domain = "docs.logikal.io"

@@ -3,8 +3,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import NamedTuple
 
+from logikal_browser import Browser, scenarios
 from pytest import CaptureFixture
-from pytest_logikal.browser import Browser, scenarios, set_browser
+from pytest_logikal.browser import set_browser
 from pytest_mock import MockerFixture
 from selenium.webdriver.common.by import By
 
