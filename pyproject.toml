@@ -7,13 +7,12 @@ name = 'logikal-docs'
 description = 'Documentation management'
 readme = 'README.rst'
 requires-python = '~= 3.12'
-license = {file = 'LICENSE.txt'}
+license = 'MIT'
 authors = [{name = 'Logikal GmbH', email = 'contact@logikal.io'}]
 keywords = ['sphinx']
 classifiers = [
   'Development Status :: 5 - Production/Stable',
   'Intended Audience :: Developers',
-  'License :: OSI Approved :: MIT License',
   'Operating System :: POSIX :: Linux',
   'Programming Language :: Python :: 3',
   'Programming Language :: Python :: 3.12',
@@ -45,8 +44,9 @@ dependencies = {file = 'requirements/core.txt'}
 [tool.setuptools.dynamic.optional-dependencies]
 jupyter = {file = 'requirements/extras/jupyter.txt'}
 
-[tool.licenses.extend_allowed_packages]
-jupyter-sphinx = '.*'  # should be removed after updating to jupyter-sphinx >0.5.3
+[tool.licenses.extend_allowed_legacy_packages]
+jupyter-sphinx = 'any'  # should be removed after updating to jupyter-sphinx >0.5.3
+matplotlib-inline = 'UNKNOWN'  # it is actually BSD-3-Clause
 
 [tool.setuptools_scm]
 
@@ -59,4 +59,7 @@ filterwarnings = [
 ]
 
 [tool.browser.versions]
-chrome = '132.0.6834.83'
+chrome = '142.0.7444.162'
+
+[tool.coverage.run]
+patch = ['subprocess']
