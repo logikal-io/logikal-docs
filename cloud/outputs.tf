@@ -2,7 +2,7 @@ output "workload_identity_provider" {
   value = module.github_auth.workload_identity_provider
 }
 
-output "publisher_service_account_email" {
+output "service_account_email" {
   value = module.github_auth.service_account_emails["docs-publisher"]
 }
 

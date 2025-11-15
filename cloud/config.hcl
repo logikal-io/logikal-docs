@@ -5,11 +5,8 @@ locals {
 
   providers = {
     google = {
-      version = "~> 7.10"
+      version = "~> 7.11"
       region = "europe-west6"
-    }
-    dnsimple = {
-      version = "~> 1.10"
     }
   }
 
