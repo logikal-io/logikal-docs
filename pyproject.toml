@@ -46,7 +46,7 @@ jupyter = {file = 'requirements/extras/jupyter.txt'}
 
 [tool.setuptools_scm]
 
-[tool.pytest.ini_options]
+[tool.pytest]
 norecursedirs = ['build', 'docs/jupyter_execute']
 filterwarnings = [
   'error',
