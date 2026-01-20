@@ -48,14 +48,9 @@ jupyter = {file = 'requirements/extras/jupyter.txt'}
 
 [tool.pytest]
 norecursedirs = ['build', 'docs/jupyter_execute']
-filterwarnings = [
-  'error',
-  # This can be removed when using jupyter_core 6+
-  'ignore:Jupyter is migrating its paths.*:DeprecationWarning',
-]
 
 [tool.browser.versions]
-chrome = '142.0.7444.162'
+chrome = '144.0.7559.60'
 
 [tool.coverage.run]
 patch = ['subprocess']
