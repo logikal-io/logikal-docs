@@ -22,6 +22,7 @@ module "github_auth" {
 module "docs_website" {
   source = "github.com/logikal-io/terraform-modules//gcp/gcs-static-site"
 
+  name = "docs"
   project_id = var.project_id
   domain_project_id = "nucleus-${var.organization_id}"
   domain_managed_zone_name = var.organization_id
