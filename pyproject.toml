@@ -50,7 +50,7 @@ jupyter = {file = 'requirements/extras/jupyter.txt'}
 norecursedirs = ['build', 'docs/jupyter_execute']
 
 [tool.browser.versions]
-chrome = '146.0.7680.66'
+chrome = '145.0.7632.117'
 
 [tool.coverage.run]
 patch = ['subprocess']
