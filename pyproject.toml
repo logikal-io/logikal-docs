@@ -1,5 +1,5 @@
 [build-system]
-requires = ['setuptools>=64', 'setuptools-scm>=8']
+requires = ['setuptools>=80', 'setuptools-scm[simple]>=10']
 build-backend = 'setuptools.build_meta'
 
 [project]
@@ -43,8 +43,6 @@ dependencies = {file = 'requirements/core.txt'}
 
 [tool.setuptools.dynamic.optional-dependencies]
 jupyter = {file = 'requirements/extras/jupyter.txt'}
-
-[tool.setuptools_scm]
 
 [tool.pytest]
 norecursedirs = ['build', 'docs/jupyter_execute']
