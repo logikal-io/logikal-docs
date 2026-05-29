@@ -8,11 +8,11 @@ import sys
 from collections.abc import Sequence
 from datetime import datetime
 from importlib import import_module, metadata
-from importlib.util import find_spec
 from pathlib import Path
 from typing import Any
 
-from logikal_utils.project import PYPROJECT, tool_config
+from logikal_utils.imports import installed
+from logikal_utils.project import PYPROJECT, project_name, tool_config
 from packaging.version import parse
 from sphinx.application import Sphinx
 from sphinx.cmd.build import jobs_argument
@@ -72,7 +72,7 @@ def build(args: argparse.Namespace, project: str, author: str, version: str, bas
 
     # Configuration overrides
     extensions = ['sphinx_rtd_theme']
-    if find_spec('jupyter_sphinx'):
+    if installed('jupyter_sphinx'):
         extensions.append('jupyter_sphinx')
 
     config_path = args.source_path / 'conf.py'
@@ -148,8 +148,10 @@ def main(args: Sequence[str] = tuple(sys.argv[1:])) -> int | str:
                         type=Path, help='build output (default: docs/build)')
     parsed_args = parser.parse_args(args)
     try:
-        project = PYPROJECT['project']['name']
-        version = (PYPROJECT['project'].get('version') or metadata.version(project)).split('+')[0]
+        project = str(project_name(raise_error_on_missing=True))
+        if not (version := PYPROJECT['project'].get('version') or metadata.version(project)):
+            raise RuntimeError('The project version must be specified')
+        version = version.split('+')[0]
 
         if parsed_args.build:
             return build(

@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 from logikal_browser import Browser, scenarios
+from logikal_utils.project import PYPROJECT
 from pytest import CaptureFixture
 from pytest_logikal.browser import set_browser
 from pytest_mock import MockerFixture
@@ -57,6 +58,10 @@ def test_errors(mocker: MockerFixture) -> None:
 
     mocker.patch('logikal_docs.docs.subprocess.run', side_effect=RuntimeError('Test'))
     assert main([]) == 'Error: Test'
+
+    mocker.patch.dict(PYPROJECT, {'project': {'name': 'test'}})
+    mocker.patch('logikal_docs.docs.metadata.version', return_value=None)
+    assert main([]) == 'Error: The project version must be specified'
 
 
 def test_config_merging(mocker: MockerFixture) -> None:
