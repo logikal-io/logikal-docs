@@ -5,12 +5,12 @@ locals {
 
   providers = {
     google = {
-      version = "~> 7.34"
+      version = "~> 7.45"
       region = "europe-west6"
     }
   }
 
   modules = {
-    "github.com/logikal-io/terraform-modules" = "v5.3.1"
+    "github.com/logikal-io/terraform-modules" = "v5.4.0"
   }
 }
